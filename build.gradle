@@ -1,6 +1,7 @@
 plugins {
     id 'java'
     id 'application'
+    id 'com.github.johnrengelman.shadow' version '7.1.2'
 }
 
 group 'to-do.list'
@@ -10,10 +11,10 @@ application {
     mainClass = 'App'
 }
 
-jar {
-    manifest {
-        attributes 'Main-Class': 'App'
-    }
+shadowJar {
+    archiveBaseName.set('java-todo')
+    archiveClassifier.set('')
+    archiveVersion.set('')
 }
 
 java {
