@@ -1,1 +1,1 @@
-web: java -Dserver.port=$PORT -jar build/libs/*.jar
+web: java -Dserver.port=$PORT --add-opens=java.base/java.util=ALL-UNNAMED --add-opens=java.base/java.lang=ALL-UNNAMED --add-opens=java.base/java.lang.reflect=ALL-UNNAMED -jar build/libs/*.jar
