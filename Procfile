@@ -1,1 +1,1 @@
-web: ./build/install/todo/bin/todo
+web: java -Dserver.port=$PORT -jar build/libs/*.jar
