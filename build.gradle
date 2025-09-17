@@ -1,7 +1,6 @@
 plugins {
     id 'java'
     id 'application'
-    id 'com.github.johnrengelman.shadow' version '8.1.1'
 }
 
 group 'to-do.list'
@@ -11,10 +10,14 @@ application {
     mainClass = 'App'
 }
 
-shadowJar {
-    archiveBaseName.set('java-todo')
-    archiveClassifier.set('')
-    archiveVersion.set('')
+jar {
+    manifest {
+        attributes 'Main-Class': 'App'
+    }
+    from {
+        configurations.runtimeClasspath.collect { it.isDirectory() ? it : zipTree(it) }
+    }
+    duplicatesStrategy = DuplicatesStrategy.EXCLUDE
 }
 
 java {
